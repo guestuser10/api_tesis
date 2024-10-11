@@ -12,7 +12,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 # Clonar el repositorio
 RUN apt-get update && apt-get install -y git
-RUN git clone https://github.com/guestuser10/api_tesis.git .
+RUN git clone https://github.com/guestuser10/api_tesis
 
 # Copiar la librería .so a la imagen
 COPY libtopsislib.so .
