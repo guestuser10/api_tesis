@@ -39,7 +39,7 @@ def json_to_formatted_strings(data):
     return attributes_str, candidates_str, weights_str, benefit_attributes_str, raw_data_str
 
 # Ruta de la librería .so
-dll_path = os.path.abspath("./libtopsislib.so")
+dll_path = os.path.abspath("./topsislib.so")
 dll = ctypes.CDLL(dll_path)
 
 #argumento y retorno de la función procesarDatos

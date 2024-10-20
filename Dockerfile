@@ -15,7 +15,7 @@ RUN apt-get update && apt-get install -y git
 RUN git clone https://github.com/guestuser10/api_tesis
 
 # Copiar la librería .so a la imagen
-COPY libtopsislib.so .
+COPY topsislib.so .
 
 # Exponer el puerto que usará la aplicación
 EXPOSE 8000
