@@ -1,9 +1,18 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 import ctypes
 import os
 
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"], 
+    allow_headers=["*"],  
+)
 
 # Definir modelo de entrada
 class TopsisInput(BaseModel):
@@ -33,7 +42,7 @@ def json_to_formatted_strings(data):
 dll_path = os.path.abspath("./libtopsislib.so")
 dll = ctypes.CDLL(dll_path)
 
-# Definir los tipos de argumento y retorno de la función procesarDatos
+#argumento y retorno de la función procesarDatos
 dll.procesarDatos.argtypes = [
     ctypes.c_char_p,
     ctypes.c_char_p,
@@ -60,4 +69,3 @@ async def run_topsis(data: TopsisInput):
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host="127.0.0.1", port=8000)
-
